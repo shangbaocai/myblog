@@ -5,9 +5,9 @@
   
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://shangbaocai.com/"/>
   <updated>2018-07-25T07:46:34.428Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://shangbaocai.com/</id>
   
   <author>
     <name>Mr.S</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/07/25/hello-world/"/>
-    <id>http://yoursite.com/2018/07/25/hello-world/</id>
+    <link href="https://shangbaocai.com/2018/07/25/hello-world/"/>
+    <id>https://shangbaocai.com/2018/07/25/hello-world/</id>
     <published>2018-07-25T07:46:34.428Z</published>
     <updated>2018-07-25T07:46:34.428Z</updated>
     

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[获取文件Md5]]></title>
+    <url>%2F2018%2F07%2F27%2F%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6Md5%2F</url>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&#123; if (ExistsFile(filePath)) &#123; FString content; FFileHelper::LoadFileToString(content, *filePath); TArray&lt;uint8&gt; outArray; if (FFileHelper::LoadFileToArray(outArray, *filePath)) &#123; return GetMd5Str(outArray); &#125; &#125; return "";&#125;FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123; FMD5 md5Maker; md5Maker.Update(inArray.GetData(), inArray.Num()); uint8 digest[16]; md5Maker.Final(digest); FString mD5Str; for (int32 i = 0; i &lt; 16; i++) &#123; mD5Str += FString::Printf(TEXT("%02x"), digest[i]); &#125; mD5Str = mD5Str.ToUpper(); return mD5Str;&#125;]]></content>
+      <categories>
+        <category>UE4</category>
+      </categories>
+      <tags>
+        <tag>UE4</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Hello World]]></title>
     <url>%2F2018%2F07%2F25%2Fhello-world%2F</url>
     <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick Start Create a new post 1$ hexo new "My New Post" More info: Writing Run server 1$ hexo server More info: Server Generate static files 1$ hexo generate More info: Generating Deploy to remote sites 1$ hexo deploy More info: Deployment]]></content>

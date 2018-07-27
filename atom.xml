@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shangbaocai.com/"/>
-  <updated>2018-07-27T01:37:26.953Z</updated>
+  <updated>2018-07-27T01:56:12.010Z</updated>
   <id>https://shangbaocai.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>c++调用蓝图变量</title>
+    <title>UE4之c++调用蓝图变量</title>
     <link href="https://shangbaocai.com/2018/07/27/c-%E8%B0%83%E7%94%A8%E8%93%9D%E5%9B%BE%E5%8F%98%E9%87%8F/"/>
     <id>https://shangbaocai.com/2018/07/27/c-调用蓝图变量/</id>
     <published>2018-07-27T01:31:03.000Z</published>
-    <updated>2018-07-27T01:37:26.953Z</updated>
+    <updated>2018-07-27T01:56:12.010Z</updated>
     
     <content type="html"><![CDATA[<p>相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下</p><a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName)</span><br><span class="line">&#123;</span><br><span class="line">const void* outValue = nullptr;</span><br><span class="line"></span><br><span class="line">UClass* myClass = otherActor-&gt;GetClass();</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext)</span><br><span class="line">&#123;</span><br><span class="line">T* inProperty = Cast&lt;T&gt;(Property);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName)</span><br><span class="line">&#123;</span><br><span class="line">outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor));</span><br><span class="line"><span class="built_in">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> outValue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>例子：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> <span class="built_in">test</span> = *(<span class="built_in">float</span>*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName(<span class="string">"test"</span>));</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -39,11 +39,11 @@
   </entry>
   
   <entry>
-    <title>获取文件Md5</title>
+    <title>UE4之获取文件Md5</title>
     <link href="https://shangbaocai.com/2018/07/27/%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6Md5/"/>
     <id>https://shangbaocai.com/2018/07/27/获取文件Md5/</id>
     <published>2018-07-27T00:56:02.000Z</published>
-    <updated>2018-07-27T01:05:39.920Z</updated>
+    <updated>2018-07-27T01:56:10.884Z</updated>
     
     <content type="html"><![CDATA[<a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">FString UGameUtility::GetFileMD5(FString filePath)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (ExistsFile(filePath))</span><br><span class="line">&#123;</span><br><span class="line">FString content;</span><br><span class="line">FFileHelper::LoadFileToString(content, *filePath);</span><br><span class="line">TArray&lt;uint8&gt; outArray;</span><br><span class="line"><span class="keyword">if</span> (FFileHelper::LoadFileToArray(outArray, *filePath))</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">return</span> GetMd5Str(outArray);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123;</span><br><span class="line">FMD5 md5Maker;</span><br><span class="line">md5Maker.Update(inArray.GetData(), inArray.Num());</span><br><span class="line">uint8 digest[16];</span><br><span class="line">md5Maker.Final(digest);</span><br><span class="line">FString mD5Str;</span><br><span class="line"><span class="keyword">for</span> (int32 i = 0; i &lt; 16; i++)</span><br><span class="line">&#123;</span><br><span class="line">mD5Str += FString::Printf(TEXT(<span class="string">"%02x"</span>), digest[i]);</span><br><span class="line">&#125;</span><br><span class="line">mD5Str = mD5Str.ToUpper();</span><br><span class="line"><span class="built_in">return</span> mD5Str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     

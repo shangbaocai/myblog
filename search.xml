@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[c++调用蓝图变量]]></title>
+    <title><![CDATA[UE4之c++调用蓝图变量]]></title>
     <url>%2F2018%2F07%2F27%2Fc-%E8%B0%83%E7%94%A8%E8%93%9D%E5%9B%BE%E5%8F%98%E9%87%8F%2F</url>
     <content type="text"><![CDATA[相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下 12345678910111213141516171819template&lt;class T&gt; static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName) &#123; const void* outValue = nullptr; UClass* myClass = otherActor-&gt;GetClass(); for (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext) &#123; T* inProperty = Cast&lt;T&gt;(Property); if (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName) &#123; outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor)); break; &#125; &#125; return outValue; &#125; 例子： 1float test = *(float*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName("test"));]]></content>
       <categories>
@@ -12,7 +12,7 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[获取文件Md5]]></title>
+    <title><![CDATA[UE4之获取文件Md5]]></title>
     <url>%2F2018%2F07%2F27%2F%E8%8E%B7%E5%8F%96%E6%96%87%E4%BB%B6Md5%2F</url>
     <content type="text"><![CDATA[12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&#123; if (ExistsFile(filePath)) &#123; FString content; FFileHelper::LoadFileToString(content, *filePath); TArray&lt;uint8&gt; outArray; if (FFileHelper::LoadFileToArray(outArray, *filePath)) &#123; return GetMd5Str(outArray); &#125; &#125; return "";&#125;FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123; FMD5 md5Maker; md5Maker.Update(inArray.GetData(), inArray.Num()); uint8 digest[16]; md5Maker.Final(digest); FString mD5Str; for (int32 i = 0; i &lt; 16; i++) &#123; mD5Str += FString::Printf(TEXT("%02x"), digest[i]); &#125; mD5Str = mD5Str.ToUpper(); return mD5Str;&#125;]]></content>
       <categories>

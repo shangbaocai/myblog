@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot) { 	GIsHighResScreenshot = bUseHighResScreenshot; 	GScreenshotResolutionX = width; 	GScreenshotResolutionY = heig">
+<meta name="description" content="12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;	GScreenshotResolutionX = width;	GScreenshotResolutio">
 <meta name="keywords" content="UE4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE4之高清截图">
 <meta property="og:url" content="https://shangbaocai.com/2018/07/27/HighResScreenshot/index.html">
 <meta property="og:site_name" content="Mr.S Notes">
-<meta property="og:description" content="void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot) { 	GIsHighResScreenshot = bUseHighResScreenshot; 	GScreenshotResolutionX = width; 	GScreenshotResolutionY = heig">
+<meta property="og:description" content="12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;	GScreenshotResolutionX = width;	GScreenshotResolutio">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T07:51:40.177Z">
+<meta property="og:updated_time" content="2018-07-27T07:53:51.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UE4之高清截图">
-<meta name="twitter:description" content="void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot) { 	GIsHighResScreenshot = bUseHighResScreenshot; 	GScreenshotResolutionX = width; 	GScreenshotResolutionY = heig">
+<meta name="twitter:description" content="12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;	GScreenshotResolutionX = width;	GScreenshotResolutio">
 
 
 
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T15:51:40+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T15:53:51+08:00">
                 2018-07-27
               </time>
             
@@ -405,15 +405,7 @@
       
 
       
-        <p>void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)
-{
-	GIsHighResScreenshot = bUseHighResScreenshot;
-	GScreenshotResolutionX = width;
-	GScreenshotResolutionY = height;
-	FScreenshotRequest::RequestScreenshot(fileName, false, true);
-	FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();
-}</p>
-
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)</span><br><span class="line">&#123;</span><br><span class="line">	GIsHighResScreenshot = bUseHighResScreenshot;</span><br><span class="line">	GScreenshotResolutionX = width;</span><br><span class="line">	GScreenshotResolutionY = height;</span><br><span class="line">	FScreenshotRequest::RequestScreenshot(fileName, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">	FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     

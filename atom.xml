@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shangbaocai.com/"/>
-  <updated>2018-07-27T07:51:40.177Z</updated>
+  <updated>2018-07-27T07:53:51.461Z</updated>
   <id>https://shangbaocai.com/</id>
   
   <author>
@@ -21,18 +21,15 @@
     <link href="https://shangbaocai.com/2018/07/27/HighResScreenshot/"/>
     <id>https://shangbaocai.com/2018/07/27/HighResScreenshot/</id>
     <published>2018-07-27T07:50:10.000Z</published>
-    <updated>2018-07-27T07:51:40.177Z</updated>
+    <updated>2018-07-27T07:53:51.461Z</updated>
     
-    <content type="html"><![CDATA[<p>void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot){GIsHighResScreenshot = bUseHighResScreenshot;GScreenshotResolutionX = width;GScreenshotResolutionY = height;FScreenshotRequest::RequestScreenshot(fileName, false, true);FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();}</p>]]></content>
+    <content type="html"><![CDATA[<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)</span><br><span class="line">&#123;</span><br><span class="line">GIsHighResScreenshot = bUseHighResScreenshot;</span><br><span class="line">GScreenshotResolutionX = width;</span><br><span class="line">GScreenshotResolutionY = height;</span><br><span class="line">FScreenshotRequest::RequestScreenshot(fileName, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)
-{
-	GIsHighResScreenshot = bUseHighResScreenshot;
-
+        &lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=
       
     
     </summary>

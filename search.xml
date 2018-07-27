@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[UE4之高清截图]]></title>
     <url>%2F2018%2F07%2F27%2FHighResScreenshot%2F</url>
-    <content type="text"><![CDATA[void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot) { GIsHighResScreenshot = bUseHighResScreenshot; GScreenshotResolutionX = width; GScreenshotResolutionY = height; FScreenshotRequest::RequestScreenshot(fileName, false, true); FString fileNameNextScreenshot = FScreenshotRequest::GetFilename(); }]]></content>
+    <content type="text"><![CDATA[12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&#123; GIsHighResScreenshot = bUseHighResScreenshot; GScreenshotResolutionX = width; GScreenshotResolutionY = height; FScreenshotRequest::RequestScreenshot(fileName, false, true); FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();&#125;]]></content>
       <categories>
         <category>UE4</category>
       </categories>

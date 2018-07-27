@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shangbaocai.com/"/>
-  <updated>2018-07-27T07:21:48.350Z</updated>
+  <updated>2018-07-27T07:51:40.177Z</updated>
   <id>https://shangbaocai.com/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UE4之高清截图</title>
+    <link href="https://shangbaocai.com/2018/07/27/HighResScreenshot/"/>
+    <id>https://shangbaocai.com/2018/07/27/HighResScreenshot/</id>
+    <published>2018-07-27T07:50:10.000Z</published>
+    <updated>2018-07-27T07:51:40.177Z</updated>
+    
+    <content type="html"><![CDATA[<p>void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot){GIsHighResScreenshot = bUseHighResScreenshot;GScreenshotResolutionX = width;GScreenshotResolutionY = height;FScreenshotRequest::RequestScreenshot(fileName, false, true);FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)
+{
+	GIsHighResScreenshot = bUseHighResScreenshot;
+
+      
+    
+    </summary>
+    
+      <category term="UE4" scheme="https://shangbaocai.com/categories/UE4/"/>
+    
+    
+      <category term="UE4" scheme="https://shangbaocai.com/tags/UE4/"/>
+    
+  </entry>
   
   <entry>
     <title>UE4之c++调用蓝图变量</title>
@@ -47,9 +75,9 @@
     <link href="https://shangbaocai.com/2018/07/27/GetFileMd5/"/>
     <id>https://shangbaocai.com/2018/07/27/GetFileMd5/</id>
     <published>2018-07-27T00:56:02.000Z</published>
-    <updated>2018-07-27T01:56:10.884Z</updated>
+    <updated>2018-07-27T07:52:01.271Z</updated>
     
-    <content type="html"><![CDATA[<a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">FString UGameUtility::GetFileMD5(FString filePath)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (ExistsFile(filePath))</span><br><span class="line">&#123;</span><br><span class="line">FString content;</span><br><span class="line">FFileHelper::LoadFileToString(content, *filePath);</span><br><span class="line">TArray&lt;uint8&gt; outArray;</span><br><span class="line"><span class="keyword">if</span> (FFileHelper::LoadFileToArray(outArray, *filePath))</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">return</span> GetMd5Str(outArray);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123;</span><br><span class="line">FMD5 md5Maker;</span><br><span class="line">md5Maker.Update(inArray.GetData(), inArray.Num());</span><br><span class="line">uint8 digest[16];</span><br><span class="line">md5Maker.Final(digest);</span><br><span class="line">FString mD5Str;</span><br><span class="line"><span class="keyword">for</span> (int32 i = 0; i &lt; 16; i++)</span><br><span class="line">&#123;</span><br><span class="line">mD5Str += FString::Printf(TEXT(<span class="string">"%02x"</span>), digest[i]);</span><br><span class="line">&#125;</span><br><span class="line">mD5Str = mD5Str.ToUpper();</span><br><span class="line"><span class="built_in">return</span> mD5Str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<a id="more"></a><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">FString GetFileMD5(FString filePath)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span> (ExistsFile(filePath))</span><br><span class="line">&#123;</span><br><span class="line">FString content;</span><br><span class="line">FFileHelper::LoadFileToString(content, *filePath);</span><br><span class="line">TArray&lt;uint8&gt; outArray;</span><br><span class="line"><span class="keyword">if</span> (FFileHelper::LoadFileToArray(outArray, *filePath))</span><br><span class="line">&#123;</span><br><span class="line"><span class="built_in">return</span> GetMd5Str(outArray);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FString GetMd5Str(TArray&lt;uint8&gt; inArray) &#123;</span><br><span class="line">FMD5 md5Maker;</span><br><span class="line">md5Maker.Update(inArray.GetData(), inArray.Num());</span><br><span class="line">uint8 digest[16];</span><br><span class="line">md5Maker.Final(digest);</span><br><span class="line">FString mD5Str;</span><br><span class="line"><span class="keyword">for</span> (int32 i = 0; i &lt; 16; i++)</span><br><span class="line">&#123;</span><br><span class="line">mD5Str += FString::Printf(TEXT(<span class="string">"%02x"</span>), digest[i]);</span><br><span class="line">&#125;</span><br><span class="line">mD5Str = mD5Str.ToUpper();</span><br><span class="line"><span class="built_in">return</span> mD5Str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     

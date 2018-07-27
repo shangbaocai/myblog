@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *fil">
+<meta name="description" content="12345678910111213141516171819202122232425262728FString GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *filePath);		TArra">
 <meta name="keywords" content="UE4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE4之获取文件Md5">
 <meta property="og:url" content="https://shangbaocai.com/2018/07/27/GetFileMd5/index.html">
 <meta property="og:site_name" content="Mr.S Notes">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *fil">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728FString GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *filePath);		TArra">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T01:56:10.884Z">
+<meta property="og:updated_time" content="2018-07-27T07:52:01.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UE4之获取文件Md5">
-<meta name="twitter:description" content="12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *fil">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728FString GetFileMD5(FString filePath)&amp;#123;	if (ExistsFile(filePath))	&amp;#123;		FString content;		FFileHelper::LoadFileToString(content, *filePath);		TArra">
 
 
 
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T09:56:10+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T15:52:01+08:00">
                 2018-07-27
               </time>
             
@@ -406,7 +406,7 @@
 
       
         <a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">FString UGameUtility::GetFileMD5(FString filePath)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (ExistsFile(filePath))</span><br><span class="line">	&#123;</span><br><span class="line">		FString content;</span><br><span class="line">		FFileHelper::LoadFileToString(content, *filePath);</span><br><span class="line">		TArray&lt;uint8&gt; outArray;</span><br><span class="line">		<span class="keyword">if</span> (FFileHelper::LoadFileToArray(outArray, *filePath))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">return</span> GetMd5Str(outArray);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123;</span><br><span class="line">	FMD5 md5Maker;</span><br><span class="line">	md5Maker.Update(inArray.GetData(), inArray.Num());</span><br><span class="line">	uint8 digest[16];</span><br><span class="line">	md5Maker.Final(digest);</span><br><span class="line">	FString mD5Str;</span><br><span class="line">	<span class="keyword">for</span> (int32 i = 0; i &lt; 16; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mD5Str += FString::Printf(TEXT(<span class="string">"%02x"</span>), digest[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	mD5Str = mD5Str.ToUpper();</span><br><span class="line">	<span class="built_in">return</span> mD5Str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">FString GetFileMD5(FString filePath)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (ExistsFile(filePath))</span><br><span class="line">	&#123;</span><br><span class="line">		FString content;</span><br><span class="line">		FFileHelper::LoadFileToString(content, *filePath);</span><br><span class="line">		TArray&lt;uint8&gt; outArray;</span><br><span class="line">		<span class="keyword">if</span> (FFileHelper::LoadFileToArray(outArray, *filePath))</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="built_in">return</span> GetMd5Str(outArray);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">FString GetMd5Str(TArray&lt;uint8&gt; inArray) &#123;</span><br><span class="line">	FMD5 md5Maker;</span><br><span class="line">	md5Maker.Update(inArray.GetData(), inArray.Num());</span><br><span class="line">	uint8 digest[16];</span><br><span class="line">	md5Maker.Final(digest);</span><br><span class="line">	FString mD5Str;</span><br><span class="line">	<span class="keyword">for</span> (int32 i = 0; i &lt; 16; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		mD5Str += FString::Printf(TEXT(<span class="string">"%02x"</span>), digest[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	mD5Str = mD5Str.ToUpper();</span><br><span class="line">	<span class="built_in">return</span> mD5Str;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -569,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

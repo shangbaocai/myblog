@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[UE4之高清截图]]></title>
+    <url>%2F2018%2F07%2F27%2FHighResScreenshot%2F</url>
+    <content type="text"><![CDATA[void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot) { GIsHighResScreenshot = bUseHighResScreenshot; GScreenshotResolutionX = width; GScreenshotResolutionY = height; FScreenshotRequest::RequestScreenshot(fileName, false, true); FString fileNameNextScreenshot = FScreenshotRequest::GetFilename(); }]]></content>
+      <categories>
+        <category>UE4</category>
+      </categories>
+      <tags>
+        <tag>UE4</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[UE4之c++调用蓝图变量]]></title>
     <url>%2F2018%2F07%2F27%2FC%2B%2BCallBlueprintProperty%2F</url>
     <content type="text"><![CDATA[12345678910111213141516171819template&lt;class T&gt; static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName) &#123; const void* outValue = nullptr; UClass* myClass = otherActor-&gt;GetClass(); for (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext) &#123; T* inProperty = Cast&lt;T&gt;(Property); if (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName) &#123; outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor)); break; &#125; &#125; return outValue; &#125; 例子： 1float test = *(float*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName("test"));]]></content>
@@ -14,7 +25,7 @@
   <entry>
     <title><![CDATA[UE4之获取文件Md5]]></title>
     <url>%2F2018%2F07%2F27%2FGetFileMd5%2F</url>
-    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728FString UGameUtility::GetFileMD5(FString filePath)&#123; if (ExistsFile(filePath)) &#123; FString content; FFileHelper::LoadFileToString(content, *filePath); TArray&lt;uint8&gt; outArray; if (FFileHelper::LoadFileToArray(outArray, *filePath)) &#123; return GetMd5Str(outArray); &#125; &#125; return "";&#125;FString UGameUtility::GetMd5Str(TArray&lt;uint8&gt; inArray) &#123; FMD5 md5Maker; md5Maker.Update(inArray.GetData(), inArray.Num()); uint8 digest[16]; md5Maker.Final(digest); FString mD5Str; for (int32 i = 0; i &lt; 16; i++) &#123; mD5Str += FString::Printf(TEXT("%02x"), digest[i]); &#125; mD5Str = mD5Str.ToUpper(); return mD5Str;&#125;]]></content>
+    <content type="text"><![CDATA[12345678910111213141516171819202122232425262728FString GetFileMD5(FString filePath)&#123; if (ExistsFile(filePath)) &#123; FString content; FFileHelper::LoadFileToString(content, *filePath); TArray&lt;uint8&gt; outArray; if (FFileHelper::LoadFileToArray(outArray, *filePath)) &#123; return GetMd5Str(outArray); &#125; &#125; return "";&#125;FString GetMd5Str(TArray&lt;uint8&gt; inArray) &#123; FMD5 md5Maker; md5Maker.Update(inArray.GetData(), inArray.Num()); uint8 digest[16]; md5Maker.Final(digest); FString mD5Str; for (int32 i = 0; i &lt; 16; i++) &#123; mD5Str += FString::Printf(TEXT("%02x"), digest[i]); &#125; mD5Str = mD5Str.ToUpper(); return mD5Str;&#125;]]></content>
       <categories>
         <category>UE4</category>
       </categories>

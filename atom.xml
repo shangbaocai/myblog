@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Mr.S Notes</title>
   
-  
+  <subtitle>代码改变世界</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shangbaocai.com/"/>

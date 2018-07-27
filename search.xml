@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[UE4之c++调用蓝图变量]]></title>
     <url>%2F2018%2F07%2F27%2FC%2B%2BCallBlueprintProperty%2F</url>
-    <content type="text"><![CDATA[相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下 12345678910111213141516171819template&lt;class T&gt; static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName) &#123; const void* outValue = nullptr; UClass* myClass = otherActor-&gt;GetClass(); for (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext) &#123; T* inProperty = Cast&lt;T&gt;(Property); if (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName) &#123; outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor)); break; &#125; &#125; return outValue; &#125; 例子： 1float test = *(float*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName("test"));]]></content>
+    <content type="text"><![CDATA[12345678910111213141516171819template&lt;class T&gt; static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName) &#123; const void* outValue = nullptr; UClass* myClass = otherActor-&gt;GetClass(); for (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext) &#123; T* inProperty = Cast&lt;T&gt;(Property); if (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName) &#123; outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor)); break; &#125; &#125; return outValue; &#125; 例子： 1float test = *(float*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName("test"));]]></content>
       <categories>
         <category>UE4</category>
       </categories>

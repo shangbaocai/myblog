@@ -81,18 +81,18 @@
 
 
 
-<meta name="description" content="相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下">
+<meta name="description" content="12345678910111213141516171819template&amp;lt;class T&amp;gt;	static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName)	&amp;#123;		const void* outValue = nullptr;		UClass* myCl">
 <meta name="keywords" content="UE4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE4之c++调用蓝图变量">
 <meta property="og:url" content="https://shangbaocai.com/2018/07/27/C++CallBlueprintProperty/index.html">
 <meta property="og:site_name" content="Mr.S Notes">
-<meta property="og:description" content="相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下">
+<meta property="og:description" content="12345678910111213141516171819template&amp;lt;class T&amp;gt;	static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName)	&amp;#123;		const void* outValue = nullptr;		UClass* myCl">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-27T01:56:12.010Z">
+<meta property="og:updated_time" content="2018-07-27T07:21:48.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UE4之c++调用蓝图变量">
-<meta name="twitter:description" content="相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下">
+<meta name="twitter:description" content="12345678910111213141516171819template&amp;lt;class T&amp;gt;	static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName)	&amp;#123;		const void* outValue = nullptr;		UClass* myCl">
 
 
 
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T09:56:12+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-27T15:21:48+08:00">
                 2018-07-27
               </time>
             
@@ -405,8 +405,7 @@
       
 
       
-        <p>相信很多人遇到这样的问题，c++怎么调用蓝图的变量？最近的项目刚好用到，就写一下</p>
-<a id="more"></a>
+        <a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">template&lt;class T&gt;</span><br><span class="line">	static const void* CallBlueprintProperty(const AActor* otherActor, const FName propertyName)</span><br><span class="line">	&#123;</span><br><span class="line">		const void* outValue = nullptr;</span><br><span class="line"></span><br><span class="line">		UClass* myClass = otherActor-&gt;GetClass();</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (UProperty* Property = myClass-&gt;PropertyLink; Property; Property = Property-&gt;PropertyLinkNext)</span><br><span class="line">		&#123;</span><br><span class="line">			T* inProperty = Cast&lt;T&gt;(Property);</span><br><span class="line"></span><br><span class="line">			<span class="keyword">if</span> (inProperty &amp;&amp; Property-&gt;GetFName() == propertyName)</span><br><span class="line">			&#123;</span><br><span class="line">				outValue = &amp;inProperty-&gt;GetPropertyValue(Property-&gt;ContainerPtrToValuePtr&lt;void&gt;(otherActor));</span><br><span class="line">				<span class="built_in">break</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="built_in">return</span> outValue;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 <p>例子：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">float</span> <span class="built_in">test</span> = *(<span class="built_in">float</span>*)UGameUtility::CallBlueprintProperty&lt;UFloatProperty&gt;(AActor*, FName(<span class="string">"test"</span>));</span><br></pre></td></tr></table></figure>

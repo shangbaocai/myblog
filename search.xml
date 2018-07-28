@@ -12,9 +12,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[UE4之高清截图]]></title>
+    <title><![CDATA[UE4之截图三种方法]]></title>
     <url>%2F2018%2F07%2F27%2FHighResScreenshot%2F</url>
-    <content type="text"><![CDATA[12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&#123; GIsHighResScreenshot = bUseHighResScreenshot; GScreenshotResolutionX = width; GScreenshotResolutionY = height; FScreenshotRequest::RequestScreenshot(fileName, false, true); FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();&#125;]]></content>
+    <content type="text"><![CDATA[第一种 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&#123; GIsHighResScreenshot = bUseHighResScreenshot; GScreenshotResolutionX = width; GScreenshotResolutionY = height; FScreenshotRequest::RequestScreenshot(fileName, false, true); FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();&#125; 第二种--命令行 1mPC-&gt;ConsoleCommand("shot", true); 第三种--ASceneCapture2D（相机截图） 首先分别创建]]></content>
       <categories>
         <category>UE4</category>
       </categories>

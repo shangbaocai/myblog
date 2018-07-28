@@ -81,20 +81,20 @@
 
 
 
-<meta name="description" content="第一种--普通方法 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;">
+<meta name="description" content="方法一 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;	GScree">
 <meta name="keywords" content="UE4">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UE4之截图三种方法">
 <meta property="og:url" content="https://shangbaocai.com/2018/07/27/HighResScreenshot/index.html">
 <meta property="og:site_name" content="Mr.S Notes">
-<meta property="og:description" content="第一种--普通方法 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;">
+<meta property="og:description" content="方法一 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;	GScree">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://i.loli.net/2018/07/28/5b5bdeaa8d072.png">
 <meta property="og:image" content="https://i.loli.net/2018/07/28/5b5bdeaa8e49b.png">
-<meta property="og:updated_time" content="2018-07-28T03:27:38.621Z">
+<meta property="og:updated_time" content="2018-07-28T04:00:06.207Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UE4之截图三种方法">
-<meta name="twitter:description" content="第一种--普通方法 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;">
+<meta name="twitter:description" content="方法一 12345678void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)&amp;#123;	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清	GScreenshotResolutionX = width;	GScree">
 <meta name="twitter:image" content="https://i.loli.net/2018/07/28/5b5bdeaa8d072.png">
 
 
@@ -347,7 +347,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T11:27:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T12:00:06+08:00">
                 2018-07-28
               </time>
             
@@ -408,12 +408,12 @@
       
 
       
-        <h2 id="第一种-普通方法">第一种--普通方法</h2>
+        <h2 id="方法一">方法一</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)</span><br><span class="line">&#123;</span><br><span class="line">	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清</span><br><span class="line">	GScreenshotResolutionX = width;</span><br><span class="line">	GScreenshotResolutionY = height;</span><br><span class="line">	FScreenshotRequest::RequestScreenshot(fileName, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">	FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="第二种-命令行">第二种--命令行</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mPC-&gt;ConsoleCommand(<span class="string">"shot"</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="第三种-ascenecapture2d-相机截图">第三种--ASceneCapture2D（相机截图）</h2>
+<h2 id="方法二-命令行">方法二--命令行</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mPC-&gt;ConsoleCommand(<span class="string">"shot"</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="方法三-ascenecapture2d-相机截图">方法三--ASceneCapture2D（相机截图）</h2>
 <p>首先分别创建
 <img src="https://i.loli.net/2018/07/28/5b5bdeaa8d072.png" alt="20180728105906.png">
 <img src="https://i.loli.net/2018/07/28/5b5bdeaa8e49b.png" alt="20180728110000.png"></p>
@@ -663,7 +663,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一种-普通方法"><span class="nav-number">1.</span> <span class="nav-text">第一种--普通方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二种-命令行"><span class="nav-number">2.</span> <span class="nav-text">第二种--命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三种-ascenecapture2d-相机截图"><span class="nav-number">3.</span> <span class="nav-text">第三种--ASceneCapture2D（相机截图）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一"><span class="nav-number">1.</span> <span class="nav-text">方法一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二-命令行"><span class="nav-number">2.</span> <span class="nav-text">方法二--命令行</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三-ascenecapture2d-相机截图"><span class="nav-number">3.</span> <span class="nav-text">方法三--ASceneCapture2D（相机截图）</span></a></li></ol></div>
             
 
           </div>

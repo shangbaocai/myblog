@@ -504,7 +504,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T11:25:34+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T11:27:38+08:00">
                 2018-07-28
               </time>
             
@@ -561,8 +561,8 @@
 
       
         
-          <h2 id="第一种">第一种</h2>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)</span><br><span class="line">&#123;</span><br><span class="line">	GIsHighResScreenshot = bUseHighResScreenshot;</span><br><span class="line">	GScreenshotResolutionX = width;</span><br><span class="line">	GScreenshotResolutionY = height;</span><br><span class="line">	FScreenshotRequest::RequestScreenshot(fileName, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">	FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h2 id="第一种-普通方法">第一种--普通方法</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">void TakePhoto(FString fileName, int32 width, int32 height, bool bUseHighResScreenshot)</span><br><span class="line">&#123;</span><br><span class="line">	GIsHighResScreenshot = bUseHighResScreenshot;    //是否高清</span><br><span class="line">	GScreenshotResolutionX = width;</span><br><span class="line">	GScreenshotResolutionY = height;</span><br><span class="line">	FScreenshotRequest::RequestScreenshot(fileName, <span class="literal">false</span>, <span class="literal">true</span>);</span><br><span class="line">	FString fileNameNextScreenshot = FScreenshotRequest::GetFilename();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="第二种-命令行">第二种--命令行</h2>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mPC-&gt;ConsoleCommand(<span class="string">"shot"</span>, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
           <!--noindex-->

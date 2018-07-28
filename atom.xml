@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://shangbaocai.com/"/>
-  <updated>2018-07-27T07:53:51.461Z</updated>
+  <updated>2018-07-28T02:21:15.864Z</updated>
   <id>https://shangbaocai.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>UE4之ZIP解压缩</title>
+    <link href="https://shangbaocai.com/2018/07/28/zip/"/>
+    <id>https://shangbaocai.com/2018/07/28/zip/</id>
+    <published>2018-07-28T01:26:10.000Z</published>
+    <updated>2018-07-28T02:21:15.864Z</updated>
+    
+    <content type="html"><![CDATA[<p>[转载]<a href="https://blog.csdn.net/wangshubo1989/article/details/52847891" target="_blank" rel="noopener">https://blog.csdn.net/wangshubo1989/article/details/52847891</a>用在ue4上，必须得创建插件，不然会引起冲突</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include "AllowWindowsPlatformTypes.h" </span></span><br><span class="line"><span class="comment">#include "zip.h"</span></span><br><span class="line"><span class="comment">#include "unzip.h"</span></span><br><span class="line"><span class="comment">#include "HideWindowsPlatformTypes.h"</span></span><br></pre></td></tr></table></figure><p>#压缩</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool Zip(FString fileName, TMap&lt;FString, FString&gt; files)</span><br><span class="line">&#123;</span><br><span class="line">HZIP hz = CreateZip(*fileName, 0);</span><br><span class="line"><span class="keyword">for</span> (auto file : files)</span><br><span class="line">&#123;</span><br><span class="line">ZipAdd(hz, *file.Key, *file.Value);</span><br><span class="line">&#125;</span><br><span class="line">CloseZip(hz);</span><br><span class="line"><span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>#解压</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">bool UnZip(FString fileName, TArray&lt;FString&gt;&amp; files)</span><br><span class="line">&#123;</span><br><span class="line">TCHAR buffer[MAX_PATH] = &#123; 0 &#125;;</span><br><span class="line">GetCurrentDirectoryW(MAX_PATH, buffer);</span><br><span class="line">FString folder = FPaths::GetPath(fileName);</span><br><span class="line">SetCurrentDirectoryW(*folder);</span><br><span class="line"></span><br><span class="line">HZIP hz = OpenZip(*fileName, 0);</span><br><span class="line">ZIPENTRY ze; GetZipItem(hz, -1, &amp;ze); </span><br><span class="line">int numitems = ze.index;</span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; numitems; i++)</span><br><span class="line">&#123;</span><br><span class="line">GetZipItem(hz, i, &amp;ze);</span><br><span class="line">UnzipItem(hz, i, ze.name);</span><br><span class="line">files.Add(ze.name);</span><br><span class="line">&#125;</span><br><span class="line">CloseZip(hz);</span><br><span class="line">SetCurrentDirectoryW(buffer);</span><br><span class="line"><span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;[转载]&lt;a href=&quot;https://blog.csdn.net/wangshubo1989/article/details/52847891&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;https://blog.csdn.net/wangshubo
+      
+    
+    </summary>
+    
+      <category term="UE4" scheme="https://shangbaocai.com/categories/UE4/"/>
+    
+    
+      <category term="UE4" scheme="https://shangbaocai.com/tags/UE4/"/>
+    
+  </entry>
   
   <entry>
     <title>UE4之高清截图</title>

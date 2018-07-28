@@ -298,6 +298,165 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://shangbaocai.com/2018/07/28/zip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mr.S">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mr.S Notes">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/07/28/zip/" itemprop="url">UE4之ZIP解压缩</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-07-28T09:26:10+08:00">
+                2018-07-28
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">更新于&#58;</span>
+              
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T10:21:15+08:00">
+                2018-07-28
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/UE4/" itemprop="url" rel="index">
+                    <span itemprop="name">UE4</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[转载]<a href="https://blog.csdn.net/wangshubo1989/article/details/52847891" target="_blank" rel="noopener">https://blog.csdn.net/wangshubo1989/article/details/52847891</a>
+用在ue4上，必须得创建插件，不然会引起冲突</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#include "AllowWindowsPlatformTypes.h" </span></span><br><span class="line"><span class="comment">#include "zip.h"</span></span><br><span class="line"><span class="comment">#include "unzip.h"</span></span><br><span class="line"><span class="comment">#include "HideWindowsPlatformTypes.h"</span></span><br></pre></td></tr></table></figure>
+<p>#压缩</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">bool Zip(FString fileName, TMap&lt;FString, FString&gt; files)</span><br><span class="line">&#123;</span><br><span class="line">	HZIP hz = CreateZip(*fileName, 0);</span><br><span class="line">	<span class="keyword">for</span> (auto file : files)</span><br><span class="line">	&#123;</span><br><span class="line">		ZipAdd(hz, *file.Key, *file.Value);</span><br><span class="line">	&#125;</span><br><span class="line">	CloseZip(hz);</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>#解压</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">bool UnZip(FString fileName, TArray&lt;FString&gt;&amp; files)</span><br><span class="line">&#123;</span><br><span class="line">	TCHAR buffer[MAX_PATH] = &#123; 0 &#125;;</span><br><span class="line">	GetCurrentDirectoryW(MAX_PATH, buffer);</span><br><span class="line">	FString folder = FPaths::GetPath(fileName);</span><br><span class="line">	SetCurrentDirectoryW(*folder);</span><br><span class="line"></span><br><span class="line">	HZIP hz = OpenZip(*fileName, 0);</span><br><span class="line">	ZIPENTRY ze; GetZipItem(hz, -1, &amp;ze); </span><br><span class="line">	int numitems = ze.index;</span><br><span class="line">	<span class="keyword">for</span> (int i = 0; i &lt; numitems; i++)</span><br><span class="line">	&#123;</span><br><span class="line">		GetZipItem(hz, i, &amp;ze);</span><br><span class="line">		UnzipItem(hz, i, ze.name);</span><br><span class="line">		files.Add(ze.name);</span><br><span class="line">	&#125;</span><br><span class="line">	CloseZip(hz);</span><br><span class="line">	SetCurrentDirectoryW(buffer);</span><br><span class="line">	<span class="built_in">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://shangbaocai.com/2018/07/27/HighResScreenshot/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -799,7 +958,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

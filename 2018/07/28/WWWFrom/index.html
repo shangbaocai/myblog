@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="Mr.S Notes">
 <meta property="og:description" content="ue4 form 填坑！ 折腾了很久">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-28T06:45:18.208Z">
+<meta property="og:updated_time" content="2018-07-28T06:47:05.960Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UE4之表单提交">
 <meta name="twitter:description" content="ue4 form 填坑！ 折腾了很久">
@@ -344,7 +344,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T14:45:18+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2018-07-28T14:47:05+08:00">
                 2018-07-28
               </time>
             
@@ -413,8 +413,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">void Post(const FString&amp; url, CWWWForm form)</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">if</span> (url.IsEmpty())</span><br><span class="line">	&#123;</span><br><span class="line">		<span class="built_in">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	TSharedRef&lt;IHttpRequest&gt; HttpRequest = FHttpModule::Get().CreateRequest();</span><br><span class="line">	HttpRequest-&gt;SetURL(url);</span><br><span class="line">	HttpRequest-&gt;SetVerb(TEXT(<span class="string">"POST"</span>));</span><br><span class="line">	FString header = FString::Printf(TEXT(<span class="string">"multipart/form-data; boundary=%s"</span>), *(form.GetBoundary()));</span><br><span class="line">	HttpRequest-&gt;SetHeader(<span class="string">"Content-Type"</span>, header);</span><br><span class="line">	HttpRequest-&gt;SetHeader(<span class="string">"Cache-Control"</span>, <span class="string">"no-cache"</span>);</span><br><span class="line">	HttpRequest-&gt;SetContent(form.GetDatas());</span><br><span class="line">	HttpRequest-&gt;OnProcessRequestComplete().BindLambda([=](FHttpRequestPtr _HttpRequest, FHttpResponsePtr _HttpResponse, bool _bSucceeded)</span><br><span class="line">	&#123;</span><br><span class="line">		</span><br><span class="line">	&#125;);</span><br><span class="line">	HttpRequest-&gt;ProcessRequest();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>Example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CWWWForm form;</span><br><span class="line">form.AddBinaryData(<span class="string">"file"</span>, fileData, fileName);</span><br><span class="line">form.AddField(<span class="string">"test"</span>, <span class="built_in">test</span>);</span><br><span class="line"></span><br><span class="line">------</span><br><span class="line">Post(url, form);</span><br></pre></td></tr></table></figure>
-<p>中文需要转码<br>FPlatformHttp::UrlEncode</p>
-
+<p>中文需要转码</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FPlatformHttp::UrlEncode</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -491,8 +491,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/07/28/Zip/" rel="next" title="UE4之ZIP解压缩">
-                <i class="fa fa-chevron-left"></i> UE4之ZIP解压缩
+              <a href="/2018/07/27/HighResScreenshot/" rel="next" title="UE4之截图三种方法">
+                <i class="fa fa-chevron-left"></i> UE4之截图三种方法
               </a>
             
           </div>
@@ -500,6 +500,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/28/Zip/" rel="prev" title="UE4之ZIP解压缩">
+                UE4之ZIP解压缩 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
